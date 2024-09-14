@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     }
 
     // Set the default balance if not provided
-    const userBalance = parsedBalance !== undefined ? parsedBalance : 500;
+    const userBalance = parsedBalance !== undefined ? parsedBalance : 5000;
 
     const checkSql = 'SELECT * FROM users WHERE phone = ? OR email = ?';
     const existingUser = await queryAsync(checkSql, [phone, email]);
