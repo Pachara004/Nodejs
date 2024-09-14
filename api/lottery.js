@@ -141,7 +141,7 @@ router.post("/searchlotto", async (req, res) => {
         const sql = `
             SELECT lottery_id, price, number, prize, uid, accepted
             FROM lottory
-            WHERE number LIKE ? AND accepted IS NULL
+            WHERE number LIKE ? AND accepted IS NULL AND uid IS NULL
         `;
         const result = await query(sql, [`%${search.number_lotto}%`]);
 
