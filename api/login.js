@@ -5,7 +5,7 @@ const util = require('util');
 const queryAsync = util.promisify(conn.query).bind(conn);
 const router = express.Router();
 
-login
+// login
 router.post('/', async (req, res) => {
   try {
     const { identifier, password } = req.body; 
