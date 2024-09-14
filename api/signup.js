@@ -21,11 +21,11 @@ router.post('/', async (req, res) => {
     // Set the default balance if not provided
     const userBalance = parsedBalance !== undefined ? parsedBalance : 500;
 
-    const checkSql = 'SELECT * FROM users WHERE phone = ?';
-    const existingUser = await queryAsync(checkSql, [phone]);
+    const checkSql = 'SELECT * FROM users WHERE phone = ? OR email = ?';
+    const existingUser = await queryAsync(checkSql, [phone, email]);
 
     if (existingUser.length > 0) {
-      return res.status(400).json({ success: false, message: 'User already exists' });
+      return res.status(400).json({ success: false, message: 'User with this phone or email already exists' });
     }
 
     const userType = 'user';
